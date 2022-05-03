@@ -57,7 +57,6 @@ def view_all_data():
 	return data
 
 
-
 def main():
 	menu = ["Home","Manage","About"]
 	create_table()
@@ -105,9 +104,6 @@ def main():
 				st.altair_chart(fig,use_container_width=True)	
 
 
-
-
-
 	elif choice == "Manage":
 		st.subheader("Manage & Monitor Results")
 		stored_data =  view_all_data() 
@@ -121,9 +117,7 @@ def main():
 	
 		c_software_proba = alt.Chart(new_df['software_proba'].reset_index()).mark_line().encode(x='software_proba',y='index')
 		c_hardware_proba = alt.Chart(new_df['hardware_proba'].reset_index()).mark_line().encode(x='hardware_proba',y='index')
-		
-		
-
+				
 		c1,c2 = st.beta_columns(2)
 		with c1:
 			with st.beta_expander("Software Probability"):
@@ -140,10 +134,17 @@ def main():
 			st.pyplot(fig2)
 		
 
-
 	else:
 		st.subheader("About")
 
+hide_st_style = """
+    <style>
+        MainMenu {visibility: hiden;}
+        footer {visibility: hidden; }
+        header {visibility: hidden; }
+    </style>
+"""
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 
 if __name__ == '__main__':
